@@ -8,7 +8,7 @@ for (let i = 0; i < localStorage.length; i++) {
   const price = info.price
 
   const itemImport = `
-    <div class="cartItem">
+    <div class="cartItem" data-key="${key}">
       <div class="width">
         <div class="itemInfoHolder">
           <div class="itemImg">
@@ -46,30 +46,26 @@ totalOrderItem.textContent = `${total}$`;
 
 
 
-const cancel = document.querySelectorAll('.cancelHolder img')
+const cancel = document.querySelectorAll('.cancelHolder')
 
 cancel.forEach(el => {
   el.addEventListener('click', () => {
-    const cartItem = el.closest('.cartItem');
-    const key = cartItem.getAttribute('data-key');
+    const containerItem = el.closest('.cartItem')
+    const key = containerItem.getAttribute('data-key');
 
-    // Удаляем элемент из localStorage
-    localStorage.removeItem(key);
+    const delItem = JSON.parse(localStorage.getItem(key))
+    const delItemPrice = delItem.price
 
-    // Удаляем элемент из DOM
-    cartItem.remove();
+    totalPriceItem.textContent = `${total -= delItemPrice}$`;
+    totalOrderItem.textContent = totalPriceItem.textContent
+    
+    localStorage.removeItem(key)
+    containerItem.remove()
 
-    // Обновляем общую цену
-    total = 0;
-    const updatedCartPrices = document.querySelectorAll('.cartPrice');
-    updatedCartPrices.forEach(elPrice => {
-      const price = parseFloat(elPrice.textContent.replace('$', ''));
-      total += price;
-    });
+    
+    
 
-    totalPriceItem.textContent = `${total}$`;
-    totalOrderItem.textContent = `${total}$`;
-  });
+  })
 });
 
 
@@ -77,12 +73,3 @@ cancel.forEach(el => {
 
 
 
-// cancel.forEach(el => {
-//   el.addEventListener('click', () => {
-//     const containerItem = el.closest('.cartItem')
-//     const name = containerItem.querySelector('.cartName').textContent
-    
-//     localStorage.removeItem(`${name}`)
-//     containerItem.remove()
-//   })
-// });
