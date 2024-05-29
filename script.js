@@ -46,3 +46,40 @@ alph.addEventListener('click', () => {
     goodsHolder.appendChild(item);
   });
 });
+
+
+
+const addCartButtons = document.querySelectorAll('.cartAdd');
+const cartValue = document.querySelector('.cartValue')
+
+
+cartValue.textContent = localStorage.length
+addCartButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const item = button.closest('.item');
+    const priceElement = item.querySelector('.price');
+    const nameElement = item.querySelector('.name').textContent
+    const priceValue = parseInt(priceElement.textContent.slice(0, -4));
+    
+    if (localStorage.getItem(`${nameElement}`)) {
+      alert('Товар уже в корзине!')
+      return
+    }
+    cartValue.textContent = localStorage.length+1
+
+
+    let info = {
+      name : nameElement,
+      price : priceValue,
+    }
+    info = JSON.stringify(info)
+    localStorage.setItem(`${nameElement}`, info)
+    console.log(JSON.parse(localStorage.getItem('itemInfo')));
+    console.log(localStorage.getItem('price'));
+    
+  });
+});
+
+
+
+
