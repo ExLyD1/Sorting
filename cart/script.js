@@ -26,7 +26,6 @@ for (let i = 0; i < localStorage.length; i++) {
     </div>
   `
   cartItemsContainer.insertAdjacentHTML('beforeend', itemImport)
-  console.log(name, price);
 }
 
 
@@ -56,8 +55,9 @@ cancel.forEach(el => {
     const delItem = JSON.parse(localStorage.getItem(key))
     const delItemPrice = delItem.price
 
-    totalPriceItem.textContent = `${total -= delItemPrice}$`;
-    totalOrderItem.textContent = totalPriceItem.textContent
+    total -= delItemPrice;
+    totalPriceItem.textContent = `${total}$`;
+    totalOrderItem.textContent = `${total}$`;
     
     localStorage.removeItem(key)
     containerItem.remove()
@@ -67,9 +67,5 @@ cancel.forEach(el => {
 
   })
 });
-
-
-
-
 
 

@@ -74,9 +74,6 @@ addCartButtons.forEach(button => {
     }
     info = JSON.stringify(info)
     localStorage.setItem(`${nameElement}`, info)
-    console.log(JSON.parse(localStorage.getItem('itemInfo')));
-    console.log(localStorage.getItem('price'));
-    
   });
 });
 
