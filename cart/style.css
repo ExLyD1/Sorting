@@ -84,13 +84,13 @@
   flex-direction: column;
 }
 .det{
-  width: 20%;
+  width: 30%;
   margin: auto;
   text-align: center;
   font-size: 22px;
 }
 .price{
-  width: 20%;
+  width: 30%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -101,7 +101,7 @@
   
 }
 .discount{
-  width: 20%;
+  width: 30%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -111,7 +111,7 @@
   margin: auto;
 }
 .total{
-  width: 20%;
+  width: 30%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -122,7 +122,7 @@
 }
 
 .continue{
-  width: 20%;
+  width: 30%;
   margin: auto;
   padding: 15px;
   font-size: 20px;
@@ -138,4 +138,20 @@
 }
 .continue{
   text-decoration: none;
+}
+
+@media screen and (max-width:1115px) {
+  .cartInfo div, .cartInfo a{
+    width: 40%;
+  }
+}
+@media screen and (max-width:580px) {
+  .cartInfo div, .cartInfo a{
+    width: 60%;
+  }
+}
+@media screen and (max-width:386px) {
+  .cartInfo div, .cartInfo a{
+    width: 80%;
+  }
 }

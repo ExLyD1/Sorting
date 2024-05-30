@@ -92,3 +92,16 @@ h1{
   width: 100%;
   height: 100%;
 }
+
+@media screen and (max-width:616px) {
+  header{
+    gap: 70px;
+    font-size: 27px;
+  }
+}
+@media screen and (max-width:420px) {
+  header{
+    gap: 40px;
+    font-size: 27px;
+  }
+}
