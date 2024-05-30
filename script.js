@@ -82,4 +82,9 @@ addCartButtons.forEach(button => {
 
 
 
+const clear = document.querySelector('.clear')
 
+clear.addEventListener('click', () => {
+  localStorage.clear()
+  cartValue.textContent = 0
+})
