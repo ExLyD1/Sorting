@@ -6,13 +6,14 @@ for (let i = 0; i < localStorage.length; i++) {
   const info = JSON.parse(localStorage.getItem(key))
   const name = info.name
   const price = info.price
+  const img = info.img
 
   const itemImport = `
     <div class="cartItem" data-key="${key}">
       <div class="width">
         <div class="itemInfoHolder">
           <div class="itemImg">
-            <img src="../images/monitor.jpg" alt="">
+            <img src="../${img}" alt="">
           </div>
           <div class="itemInfo">
             <div class="cartName">${name}</div>
@@ -45,7 +46,7 @@ totalOrderItem.textContent = `${total}$`;
 
 
 
-const cancel = document.querySelectorAll('.cancelHolder')
+const cancel = document.querySelectorAll('.cancelHolder img')
 
 cancel.forEach(el => {
   el.addEventListener('click', () => {

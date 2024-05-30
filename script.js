@@ -58,9 +58,11 @@ addCartButtons.forEach(button => {
   button.addEventListener('click', () => {
     const item = button.closest('.item');
     const priceElement = item.querySelector('.price');
+    const imgElement = item.querySelector('.productImg img').getAttribute('src')
     const nameElement = item.querySelector('.name').textContent
     const priceValue = parseInt(priceElement.textContent.slice(0, -4));
     
+
     if (localStorage.getItem(`${nameElement}`)) {
       alert('Товар уже в корзине!')
       return
@@ -71,6 +73,7 @@ addCartButtons.forEach(button => {
     let info = {
       name : nameElement,
       price : priceValue,
+      img : imgElement,
     }
     info = JSON.stringify(info)
     localStorage.setItem(`${nameElement}`, info)
